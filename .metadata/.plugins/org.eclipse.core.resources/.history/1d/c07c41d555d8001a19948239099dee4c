@@ -1,0 +1,295 @@
+package com.sbs.jhs.at.controller;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.sbs.jhs.at.dto.Article;
+import com.sbs.jhs.at.dto.ArticleReply;
+import com.sbs.jhs.at.service.ArticleService;
+
+@Controller
+public class ArticleController {
+	@Autowired
+	private ArticleService articleService;
+
+	// 리스트
+	@RequestMapping("/article/list")
+	public String showList(Model model, @RequestParam Map<String, Object> param) {
+		String page = "1";
+		if (param.get("page") != null && param.get("page").toString().length() != 0) {
+			page = (String) param.get("page");
+		}
+		String searchKeyword = "";
+		if (param.get("searchKeyword") != null && param.get("searchKeyword").toString().length() != 0) {
+			searchKeyword = (String) param.get("searchKeyword");
+		}	
+		
+		
+		int itemsInAPage = 10;
+		int totalCount = articleService.getForPrintListArticlesCount(searchKeyword);
+		int totalPage = (int) Math.ceil(totalCount / (double) itemsInAPage);
+
+		int nowPage = Integer.parseInt(page);
+		int intPage = Integer.parseInt(page);
+
+		if (intPage % 5 != 0) {
+			intPage = intPage / 5;
+			intPage = (intPage * 5) + 1;
+		} else if (intPage % 5 == 0) {
+			intPage = intPage - 4;
+		}
+		model.addAttribute("page", intPage);
+		model.addAttribute("totalCount", totalCount);
+		model.addAttribute("totalPage", totalPage);
+		
+		
+		List<Article> articles = articleService.getForPrintArticles(nowPage, itemsInAPage, searchKeyword);
+
+		model.addAttribute("articles", articles);
+
+		return "article/list";
+	}
+
+	// 디테일
+	@RequestMapping("/article/detail")
+	public String showDetail(Model model, int id) {
+		// 글 상세
+		Article article = articleService.getForPrintOneArticle(id);
+
+		model.addAttribute("article", article);
+		
+		return "article/detail";
+	}
+
+	// 삭제
+	@RequestMapping("/article/doDelete")
+	public String showDoDelete(Model model, int id) {
+		Map<String, Object> rs = articleService.updateForDeleteOneArticle(id);
+
+		String msg = (String) rs.get("msg");
+		String redirectUrl = "/article/list";
+
+		model.addAttribute("alertMsg", msg);
+		model.addAttribute("locationReplace", redirectUrl);
+
+		return "common/redirect";
+	}
+
+	// 글쓰기 페이지
+	@RequestMapping("/article/write")
+	public String showWrite(Model model) {
+
+		return "article/write";
+	}
+
+	// 글쓰기 실행
+	@RequestMapping("/article/doWrite")
+	public String showDoWrite(Model model, @RequestParam Map<String, Object> param) {
+		Map<String, Object> rs = articleService.insertForWriteOneArticle(param);
+
+		String msg = (String) rs.get("msg");
+		String redirectUrl = "/article/list";
+
+		model.addAttribute("alertMsg", msg);
+		model.addAttribute("locationReplace", redirectUrl);
+
+		return "common/redirect";
+	}
+	
+	// 글수정 페이지
+	@RequestMapping("/article/modify")
+	public String showModify(Model model, int id) {
+		Article article = articleService.getForPrintOneArticle(id);
+
+		model.addAttribute("article", article);
+
+		return "article/modify";
+	}
+		// 글수정 페이지
+	@RequestMapping("/article/doModify")
+	public String showDoModify(Model model, @RequestParam Map<String, Object> param) {
+		Map<String, Object> rs = articleService.updateForModifyOneArticle(param);
+		
+		String msg = (String) rs.get("msg");
+		String redirectUrl = "/article/list";
+		
+		model.addAttribute("alertMsg", msg);
+		model.addAttribute("locationReplace", redirectUrl);
+		
+		return "common/redirect";
+	}
+	
+	
+	// 댓글 작성
+//	@RequestMapping("article/doWriteReply")
+//	public String doWriteReply(Model model, @RequestParam Map<String, Object> param) {
+//		String articleId = "";
+//		if (param.get("articleId") != null && param.get("articleId").toString().length() != 0) {
+//			articleId = (String) param.get("articleId");
+//		}
+//		
+//		Map<String, Object> rs = articleService.writeReply(param);
+//
+//		String msg = (String) rs.get("msg");
+//		String redirectUrl = "/article/detail?id=" + articleId + "&replyPage=1";
+//
+//		model.addAttribute("alertMsg", msg);
+//		model.addAttribute("locationReplace", redirectUrl);
+//
+//		return "common/redirect";
+//	}
+	
+	// ajax댓글 작성
+	@RequestMapping("article/doWriteReplyAjax")
+	@ResponseBody
+	public Map<String, Object> doWriteReplyAjax(@RequestParam Map<String, Object> param) {
+		
+		Map<String, Object> rs = articleService.writeReply(param);
+
+		return rs;
+	}
+	
+	// ajax댓글 리스팅
+	@RequestMapping("article/getForPrintArticleRepliesRs")
+	@ResponseBody
+	public Map<String, Object> getForPrintArticleRepliesRs(int id, int from) {
+		List<ArticleReply> articleReplies = articleService.getForPrintArticleReplies(id, from);
+//		System.out.println(from);
+		Map<String, Object> rs = new HashMap<>();
+		rs.put("resultCode", "S-1");
+		rs.put("msg", String.format("총 %d개의 댓글이 있습니다.", articleReplies.size()));
+		rs.put("articleReplies", articleReplies);
+		
+		// 댓글 페이징
+//		int totalCount = articleReplies.size(); // 댓글갯수
+//		int totalPage = (int) Math.ceil(totalCount / (double) 10); // 페이지 수
+//		
+//		int nowPage = replyPage; // 1-5 6-10 ... 페이징에 필요한 숫자
+//		if (nowPage % 5 != 0) {
+//			nowPage = nowPage / 5;
+//			nowPage = (nowPage * 5) + 1;
+//		} else if (nowPage % 5 == 0) {
+//			nowPage = nowPage - 4;
+//		}
+//		
+//
+//		int viewPage = (replyPage*10)-10; //해당 페이지 10개 출력을 위한 숫자
+//		
+//		List<ArticleReply> nowViewArticleReplies = new ArrayList<>();
+//		
+//		for(int i = viewPage; i < viewPage + 10; i++) { // 출력할 10개의 댓글 저장,
+//			try{
+//				nowViewArticleReplies.add(articleReplies.get(i)); 
+//			} catch(IndexOutOfBoundsException e) { // index를 초과한 값을 넣을 경우 for탈출
+//				break;
+//			}
+//		}
+//		
+//		model.addAttribute("replyPage", replyPage); //현재 페이지
+//		model.addAttribute("page", nowPage);
+//		model.addAttribute("articleReplies", nowViewArticleReplies);
+//		model.addAttribute("totalCount", totalCount);
+//		model.addAttribute("totalPage", totalPage);
+		
+		return rs;
+	}
+	
+	// ajax댓글 삭제
+	@RequestMapping("article/doDeleteReplyAjax")
+	@ResponseBody
+	public Map<String, Object> doDeleteReply(String id) {
+		
+		Map<String, Object> rs = articleService.updateForDeleteOneArticleReply(id);
+
+		/*
+		try { Thread.sleep(3000); } catch (InterruptedException e) {
+		e.printStackTrace(); }
+		*/
+
+		return rs;
+	}
+
+	// 댓글 수정 페이지
+	@RequestMapping("article/modifyReply")
+	public String showModifyReply(Model model, int id) {
+//권한탐색
+//		if (((String) articleModifyReplyAvailableRs.get("resultCode")).startsWith("F-")) {
+//			model.addAttribute("alertMsg", articleModifyReplyAvailableRs.get("msg"));
+//			model.addAttribute("historyBack", true);
+//
+//			return "common/redirect";
+//		}
+
+		ArticleReply articleReply = articleService.getForPrintArticleReply(id);
+
+		model.addAttribute("articleReply", articleReply);
+
+		return "article/modifyReply";
+	}
+	
+	// 댓글 수정
+	@RequestMapping("article/doModifyReply")
+	public String doModifyReply(Model model, @RequestParam Map<String, Object> param) {
+//		권한탐색
+//		Map<String, Object> articleModifyReplyAvailableRs = articleService.getArticleModifyReplyAvailable(id, loginedMemberId);
+//
+//		if (((String) articleModifyReplyAvailableRs.get("resultCode")).startsWith("F-")) {
+//			model.addAttribute("alertMsg", articleModifyReplyAvailableRs.get("msg"));
+//			model.addAttribute("historyBack", true);
+//
+//			return "common/redirect";
+//		}
+		
+		String articleId = "";
+		if (param.get("articleId") != null && param.get("articleId").toString().length() != 0) {
+			articleId = (String) param.get("articleId");
+		}
+
+		Map<String, Object> rs = articleService.modifyReply(param);
+
+		String msg = (String) rs.get("msg");
+//		String redirectUrl = (String) param.get("redirectUrl");
+		String redirectUrl = "detail?id="+articleId 	+ "&replyPage=1";
+
+		model.addAttribute("alertMsg", msg);
+		model.addAttribute("locationReplace", redirectUrl);
+
+		return "common/redirect";
+	}
+	
+	// ajax댓글수정
+	@RequestMapping("article/doModifyReplyAjax")
+	@ResponseBody
+	public Map<String, Object> doModifyReplyAjax(@RequestParam Map<String, Object> param) {
+
+		int id = Integer.parseInt((String) param.get("id"));
+		Map<String, Object> articleModifyReplyAvailableRs = articleService.getArticleModifyReplyAvailable(id, 1);
+
+		if (((String) articleModifyReplyAvailableRs.get("resultCode")).startsWith("F-")) {
+			return articleModifyReplyAvailableRs;
+		}
+
+		Map<String, Object> rs = articleService.modifyReply(param);
+
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+		return rs;
+	}
+
+}
+//회원관련기능
+//int loginedMemberId = (int) request.getAttribute("loginedMemberId");
+//
+//Map<String, Object> articleModifyReplyAvailableRs = articleService.getArticleModifyReplyAvailable(id, loginedMemberId);

@@ -1,0 +1,38 @@
+package com.sbs.jhs.at.dao;
+
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import com.sbs.jhs.at.dto.Article;
+import com.sbs.jhs.at.dto.ArticleReply;
+
+@Mapper
+public interface ArticleDao {
+	int getForPrintListArticlesCount(@Param("searchKeyword") String searchKeyword);
+	
+	List<Article> getForPrintArticles(int limitFrom, int itemsInAPage, @Param("searchKeyword") String searchKeyword);
+
+	Article getForPrintOneArticle(@Param("id") int id);
+
+	void updateForDeleteOneArticle(@Param("id") int id);
+
+	void insertForWriteOneArticle(Map<String, Object> param);
+
+	void updateForModifyOneArticle(Map<String, Object> param);
+
+	void writeArticleReply(Map<String, Object> param);
+
+//	ArticleReply getArticleReply(int id);
+	
+	void updateForDeleteOneArticleReply(String id);
+	
+	List<ArticleReply> getForPrintArticleRepliesFrom(int articleId, int from);
+
+	ArticleReply getForPrintArticleReply(int id);
+
+	void modifyArticleReply(Map<String, Object> param);
+
+}

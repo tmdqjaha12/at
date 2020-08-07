@@ -1,0 +1,881 @@
+@charset "UTF-8";
+
+html {
+	/* 영문이면 roboto가 적용되고, 한글이면 Noto Sans KR가 적용되도록 아래와 같은 순서로 배치 */
+	font-family: "Roboto", "Noto Sans KR", sans-serif;
+}
+
+/* 노말라이즈 */
+body, ul, li, h1 {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+body {
+	padding-bottom:200px;
+}
+
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+label[for] {
+	cursor: pointer;
+	user-select: none;
+}
+
+/* 라이브러리 */
+.block {
+	display: block;
+}
+
+.inline-block {
+	display: inline-block;
+}
+
+.abs-full {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+}
+
+.absolute-left {
+	position: absolute;
+	left: 0;
+}
+
+.absolute-right {
+	position: absolute;
+	right: 0;
+}
+
+.absolute-bottom {
+	position: absolute;
+	bottom: 0;
+}
+
+.absolute-top {
+	position: absolute;
+	top: 0;
+}
+
+.absolute-center {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.absolute-middle {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.absolute-middle.absolute-center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+}
+
+.relative {
+	position: relative;
+}
+
+.ratio-16-9::after {
+  content:"";
+  display:block;
+  padding-top:56.25%;
+}
+
+.ratio-1-1::after {
+  content:"";
+  display:block;
+  padding-top:100%;
+}
+
+.cell {
+	float: left;
+	box-sizing: border-box;
+}
+
+.cell-right {
+	float: right;
+	box-sizing: border-box;
+}
+
+.row::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.clear-both {
+	clear: both;
+}
+
+.img-box>img {
+	width: 100%;
+	display: block;
+}
+
+.con {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.margin-0-auto {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.text-align-center {
+	text-align: center;
+}
+
+.text-align-right {
+	text-align: right;
+}
+
+.line-height-0 {
+	line-height: 0;
+}
+
+.line-height-0>* {
+	line-height: normal;
+}
+
+.width-30px {
+	width: 30px;
+}
+
+.width-35px {
+	width: 35px;
+}
+
+.width-40px {
+	width: 35px;
+}
+
+.width-45px {
+	width: 35px;
+}
+
+.width-50px {
+	width: 50px;
+}
+
+.width-80px {
+	width: 80px;
+}
+
+.width-100px {
+	width: 100px;
+}
+
+.width-100p {
+	width: 100%;
+}
+
+.width-60p {
+	width: 60%;
+}
+
+.width-55p {
+	width: 55%;
+}
+
+.width-50p {
+	width: 50%;
+}
+
+.width-45p {
+	width: 45%;
+}
+
+.width-40p {
+	width: 40%;
+}
+
+.width-30p {
+	width: 30%;
+}
+
+.width-35p {
+	width: 35%;
+}
+
+.width-100p-except-30px {
+	width: calc(100% - 30px);
+}
+
+.width-100p-except-35px {
+	width: calc(100% - 35px);
+}
+
+.width-100p-except-40px {
+	width: calc(100% - 40px);
+}
+
+.width-100p-except-50px {
+	width: calc(100% - 50px);
+}
+
+.width-100p-except-80px {
+	width: calc(100% - 80px);
+}
+
+.width-100p-except-100px {
+	width: calc(100% - 100px);
+}
+
+.height-100p {
+	height: 100%;
+}
+
+.height-50p {
+	height: 50%;
+}
+
+.border-box {
+	box-sizing: border-box;
+}
+
+.font-size-dot-8rem {
+	font-size: .8rem;
+}
+
+.table-row {
+	display: table;
+}
+
+.table-row.row::after {
+	display: inline;
+	clear: non;
+}
+
+.table-row>.cell {
+	float: none;
+	display: table-cell;
+}
+
+.border-red {
+	border: 10px solid red;
+}
+
+.border-green {
+	border: 10px solid green;
+}
+
+.border-blue {
+	border: 10px solid blue;
+}
+
+.border-gold {
+	border: 10px solid gold;
+}
+
+.border-pink {
+	border: 10px solid pink;
+}
+
+/* 라이브러리 - flex */
+*>.flex {
+	display: flex;
+}
+
+*>.flex-grow-1 {
+	flex-grow: 1;
+}
+
+*>.flex-jc-s {
+	justify-content: flex-start;
+}
+
+*>.flex-jc-c {
+	justify-content: center;
+}
+
+*>.flex-jc-e {
+	justify-content: flex-end;
+}
+
+*>.flex-jc-sb {
+	justify-content: space-between;
+}
+
+*>.flex-ai-c {
+	align-items: center;
+}
+
+*>.flex-ai-s {
+	align-items: flex-start;
+}
+
+*>.flex-ai-e {
+	align-items: flex-end;
+}
+
+*>.flex-as-s {
+	align-self: stretch;
+}
+
+*>.flex-as-c {
+	align-self: center;
+}
+
+*>.flex-as-s {
+	align-self: flex-start;
+}
+
+*>.flex-as-e {
+	align-self: flex-end;
+}
+
+*>.flex-column-nowrap {
+	flex-flow: column nowrap;
+}
+
+*>.flex-column-wrap {
+	flex-flow: column wrap;
+}
+
+*>.flex-row-nowrap {
+	flex-flow: row nowrap;
+}
+
+*>.flex-row-wrap {
+	flex-flow: row wrap;
+}
+
+.flex-ch-basis-0>* {
+	flex-basis: 0;
+}
+
+*>.flex-1-0-0 {
+	flex: 1 0 0;
+}
+/* 커스텀 라이브러리 */
+/* lib */
+.form1 {
+    display: block; width: 100%;
+}
+
+.form1 .form-row {
+    align-items: center; display: flex;
+}
+
+.form1 .form-row>.label {
+    width: 100px;
+}
+
+.form1 .form-row>.input {
+    flex-grow: 1;
+}
+
+.form1 .form-row>.input>input,.form1 .form-row>.input>textarea {
+    display: block; width: 100%; box-sizing: border-box; padding: 10px;
+}
+
+.form1 .form-row>.input>select {
+    padding: 10px;
+}
+
+.form1 .form-row>.input>textarea {
+    height: 500px;
+}
+
+@media ( max-width : 700px ) {
+    .form1 .form-row {
+        display: block;
+    }
+}
+
+/* 커스텀 */
+
+.form1 .message {
+	color:red;
+}
+
+@media ( max-width :799px) {
+	.visible-on-md-up {
+		display: none !important;
+	}
+}
+
+@media ( min-width :800px) {
+	.visible-on-sm-down {
+		display: none !important;
+	}
+}
+
+.con {
+	max-width: 856px;
+}
+
+/* 탑바 시작 */
+.top-bar {
+	height: 100px;
+	background-color: pink;
+	color: white;
+}
+
+.top-bar .img-box img{
+	height:100px
+}
+
+.top-bar .menu-box-1>ul>li>a {
+	padding: 0 20px;
+	font-weight: bold;
+	font-size: 1.2rem;
+}
+
+.top-bar .menu-box-1>ul>li:hover>a {
+	background-color: white;
+	color: black;
+}
+
+.top-bar .menu-box-1 ul>li {
+	position: relative;
+}
+
+.top-bar .menu-box-1>ul ul {
+	display: none;
+	color: black;
+	background-color: white;
+	position: absolute;
+	top: 100%;
+	left: -10px;
+	width: 100%;
+	border: 10px solid pink;
+	border-top-width: 0;
+}
+
+.top-bar .menu-box-1 ul>li:hover>ul {
+	display: block;
+}
+
+.top-bar .menu-box-1>ul ul>li>a {
+	font-weight: bold;
+	text-align: center;
+	padding: 30px 0;
+}
+
+.top-bar .menu-box-1>ul ul>li:hover>a {
+	background-color: pink;
+	color: white;
+}
+
+/* 탑바 끝 */
+
+/* Articles 검색 시작 */
+.search-box {
+	margin-top:8px;
+	margin-bottom:10px;
+}
+/* Articles 검색 끝 */
+
+/* Articles 리스트 시작 */
+.page-bn-1 {
+	text-align: center;
+	margin-top:30px;
+}
+
+.articles-count {
+	margin-top:30px;
+}
+
+.page-list-1 {
+	background-color:white;
+}
+
+.page-list-1 > ul{
+	background-color:pink;
+	margin-top:5px;
+}
+
+.page-list-1 > ul::after {
+	content: "";
+	display:block;
+	clear: both;
+}
+
+.page-list-1 > ul > li{
+	float:left;
+	width:calc(100% / 6);
+	box-sizing: border-box;
+}
+
+.page-list-1 > ul > li > a{
+	display:block;
+	padding:20px;
+	cursor: default;
+	white-space: nowrap;
+	overflow:hidden; 
+	text-overflow:ellipsis;
+	text-align: center;
+}
+
+.page-list-1 > ul > li > a.page-list-title{
+	cursor: pointer;
+}
+.page-list-1 > ul > li > a.page-list-title:hover{
+	text-decoration:underline;
+	color:blue;
+}
+.page-list-1 .bigo  div:hover > a{
+	text-decoration:underline;
+	color:blue;	
+}
+/* Articles 리스트 끝 */
+
+/* Articles 페이징 시작 */
+.page-box {
+	margin-top:10px;
+	margin-bottom: 30px;
+	background-color:pink;
+	text-align: center;
+}
+
+.page-box > ul > li {
+	display: inline-block;
+}
+
+.page-box > ul > li > a {
+	font-size: 1.2rem;
+	padding: 0 10px;
+	text-decoration: underline;
+	color: #787878;
+}
+
+.page-box > ul > li:hover > a {
+	color: black;
+}
+
+.page-box > ul > li.current > a {
+	color: red;
+}
+
+.page-box > ul > span {
+	cursor: pointer;
+}
+
+.page-box > ul > span:active {
+	color:blue;
+}
+/* Articles 페이징 끝 */
+
+/* Article Detail 시작 */
+.detail-box-1 {
+	margin-top:50px;
+	border:3px solid pink;
+}
+.detail-box-1 > h1.title {
+	text-align:center;
+	margin-top:10px;	
+}
+.detail-box-1 > h3.hit {
+	text-align:right;
+	margin-right:10px;
+}
+.detail-box-1 > .title-line {
+	border-bottom:2px solid pink;
+}
+.detail-box-1 > .modify-and-delete {
+	text-align: right;
+	vertical-align: bottom;
+}
+.detail-box-1 > .modify-and-delete > div {
+	display:inline-block;
+	background-color:#efefef;
+	border:1px solid black;
+}
+
+.detail-box-1 > .modify-and-delete > div > a{
+	padding:5px;
+	display:block;
+}
+
+.detail-box-1 > #viewer1 {
+	margin: 20px;
+}
+/* Article Detail 끝 */
+
+/* Article Reply Write 시작 */
+.article-reply-write {
+	margin-top: 50px;
+}
+.article-reply-write > .reply-button {
+	width:120px;
+	height:30px;
+	background-color:white;
+	color:black;
+	text-align: center;
+	border-radius: 100%;
+	border:1px solid pink;
+	font-weight: bold;
+	display:block;
+	margin:0 auto;
+	cursor: pointer;
+}
+.article-reply-write > .reply-button.active {
+	background-color:pink;
+	color:white;
+}
+
+.write-reply-form-box {
+	display:none;
+}
+
+.write-reply-form-box.active {
+	display:block;
+	margin-top: 30px;
+	margin-left:auto;
+}  
+/* Article Reply Write 끝  */
+
+/* Article Reply view 시작 */
+.article-reply-view::before {
+	content: "";
+	display: block;
+	clear: both;
+	border-radius:100%;
+	border:3px solid pink;
+	margin-bottom: 50px;
+}
+
+.article-reply-view > .line::after {
+	content: "";
+	display: block;
+	clear: both;
+	border-radius:100%;
+	border:1px dotted pink;
+	margin-bottom: 10px;
+}
+
+
+.article-reply-view {
+	margin-top: 50px;
+}
+
+.article-reply-view .img-box > img {
+	width:50px;
+	height:50px;
+	border-radius: 100%;
+	border:0.7px solid black;
+}
+
+.article-reply-view h5 {
+	font-weight:normal;
+	margin-left:10px;
+}
+
+.article-reply-view h4 {
+	margin-left: 60px;
+	display:none;
+}
+
+.article-reply-view h4.active {
+	display: block;
+}
+
+.article-reply-modify-box{
+	display:none;
+}
+.article-reply-modify-box.active{
+	display: block;
+}
+
+/* Article Reply view 끝 */
+
+/* Article Reply Modify 시작 */
+.article-reply-view .reply-modify {
+	position:relative;
+	width:30px; 
+	height:20px; 
+	background-color:#efefef; 
+	text-align:center; 
+	font-weight:bold; 
+	margin-bottom:10px; 
+	margin-left:95%; 
+	cursor:pointer;
+}
+
+.article-reply-view .reply-modify .reply-modify-box{
+	position:absolute;
+	top:-560%;
+	left:50%;
+	transform:translateX(-50%);
+	display:none;
+}
+.article-reply-view .reply-modify .reply-modify-box::after {
+	position:absolute;
+	content:"";
+	display:block;
+	width:20px;
+	height:20px;
+	background-color:#efefef;
+	top:90%;
+	left:50%;
+	transform:translateX(-50%) rotate(45deg);
+	cursor: default;
+	z-index: -1;
+}
+
+.article-reply-view .reply-modify:hover .reply-modify-box{
+	display:block;
+}
+
+.article-reply-view .reply-modify .reply-modify-box input{
+	border:none;
+	background-color:#efefef;
+	color:black;
+	display:block;
+	padding:10px;
+	cursor:pointer;
+}
+.article-reply-view .reply-modify .reply-modify-box input:hover {
+	background-color:black;
+	color:white;
+}
+
+.article-reply-view .reply-modify .reply-modify-box .reply-modify-button {
+	background-color:#efefef;
+	font-weight:normal;
+}
+.article-reply-view .reply-modify .reply-modify-box .reply-modify-button:hover {
+	background-color:black;
+	color:white;
+}
+
+/* Article Reply Modify 끝 */
+
+/* login-form-box 시작 */
+
+/* login-form-box 끝 */
+
+/* find-box 시작 */
+.find-box {
+	position: relative;
+}
+
+.find-box > .align-find-box {
+	position: absolute;
+	left:50%;
+	transform: translateX(-50%);
+}
+
+.find-box::after {
+	content: "";
+	display:block;
+	clear: both;
+}
+
+.find-box form {
+	float: left;
+	box-sizing: border-box;
+}
+
+.find-box input {
+	border:none;
+	background-color:white;
+	cursor: pointer;
+	display:block;
+	padding:5px;
+	margin:10px;
+}
+
+.find-box input:hover {
+	color:blue;
+}
+
+/* find-box 끝 */
+
+/* 모바일 탑바 시작 */
+.mobile-top-bar {
+	background-color: pink;
+	color: white;
+	height: 50px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+
+@media ( max-width :799px) {
+	body {
+		padding-top: 50px;
+	}
+}
+
+.mobile-top-bar .btn-toggle-mobile-side-bar {
+	font-size: 2rem;
+	padding: 0 10px;
+}
+
+.mobile-top-bar .btn-toggle-mobile-side-bar>:last-child {
+	display: none;
+}
+
+.mobile-top-bar .btn-toggle-mobile-side-bar.active>:last-child {
+	display: block;
+}
+
+.mobile-top-bar .btn-toggle-mobile-side-bar.active>:first-child {
+	display: none;
+}
+
+.mobile-top-bar .logo {
+	font-size: 2rem;
+}
+
+/* 모바일 탑바 끝 */
+
+/* 모바일 사이드바 사작 */
+.mobile-side-bar {
+	position: fixed;
+	top: 50px;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	color: white;
+	display: none;
+}
+
+.mobile-side-bar.active {
+	display: flex;
+}
+
+.mobile-side-bar .menu-box-1 ul>li>a {
+	font-size: 1.2rem;
+	font-weight: bold;
+	text-align: center;
+}
+
+.mobile-side-bar .menu-box-1 ul>li:hover>a {
+	background-color: white;
+	color: black;
+}
+
+.mobile-side-bar .menu-box-1>ul ul {
+	display: none;
+}
+
+.mobile-side-bar .menu-box-1 ul>li:hover>ul {
+	display: block;
+}
+
+/* 모바일 사이드바 끝 *//*list*/
+
+.padding-left-10 {
+	padding-left:10px;
+}
+
+.padding-right-10 {
+	padding-right:10px;
+}
