@@ -1,37 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="getArticleReply"/>
+		<item key="selection" value=";"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="getArticleReply"/>
-			<item value="modifyArticleReply"/>
-			<item value="msg = msg.replace(&quot;삭제&quot;, &quot;수정&quot;);"/>
-			<item value="getArticleModifyReplyAvailable"/>
-			<item value="삭제중"/>
-			<item value="ArticleReply__delete"/>
-			<item value="obj"/>
-			<item value="삭제하시"/>
-			<item value="ViewArticle1__updateLikePoint"/>
-			<item value="ArticleReply__loadList"/>
-			<item value="setTimeout(ArticleReply__loadList, 1000);"/>
-			<item value="back"/>
-			<item value="ArticleReply__lastLoadedArticleReplyId"/>
-			<item value="getForPrintArticleRepliesRs"/>
-			<item value="WriteReply__submitForm"/>
+			<item value=";"/>
+			<item value="articleId : param.id,"/>
+			<item value="ArticleWriteReplyForm__submit"/>
+			<item value="id"/>
+			<item value="getForPrintReplies"/>
+			<item value="writeArticleReply"/>
+			<item value="article-"/>
+			<item value="ReplyList__$box"/>
+			<item value="&#x09;var ReplyList__$box = $(&apos;.article-reply-list-box&apos;);"/>
+			<item value="article-reply-modify"/>
+			<item value="&lt;div class=&quot;reply-modify-form-modal flex flex-ai-c flex-jc-c&quot;&gt;"/>
+			<item value="&lt;div class=&quot;article-reply-modify-form-modal flex flex-ai-c flex-jc-c&quot;&gt;"/>
+			<item value=".article-reply-modify-form-modal-actived .article-reply-modify-form-modal"/>
+			<item value=".article-reply-modify-form-modal {"/>
+			<item value="&lt;div class=&quot;reply-list-box table-box con&quot;&gt;"/>
 		</list>
 		<list key="replacehistory">
+			<item value="replyDao"/>
+			<item value="replyService"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item key="DIALOG_X_ORIGIN" value="1626"/>
 		<item key="DIALOG_Y_ORIGIN" value="214"/>
 		<item key="DIALOG_WIDTH" value="288"/>
-		<item key="DIALOG_HEIGHT" value="398"/>
+		<item key="DIALOG_HEIGHT" value="396"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
 	</section>
 </section>

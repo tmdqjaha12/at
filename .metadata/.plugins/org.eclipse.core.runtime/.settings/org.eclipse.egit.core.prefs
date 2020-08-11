@@ -1,4 +1,4 @@
-GitRepositoriesView.GitDirectories=C\:\\work\\sts-4.4.0.RELEASE-workspace\\java-blog\\.git;C\:\\work\\sts-4.4.0.RELEASE-workspace\\cuni\\.git;C\:\\work\\sts-4.4.0.RELEASE-workspace\\at\\.git;C\:\\work\\sts-4.4.0.RELEASE-workspace\\starter\\.git;
-GitRepositoriesView.GitDirectories.relative=java-blog\\.git;cuni\\.git;at\\.git;starter\\.git;
+GitRepositoriesView.GitDirectories=C\:\\work\\sts-4.4.0.RELEASE-workspace\\java-blog\\.git;C\:\\work\\sts-4.4.0.RELEASE-workspace\\cuni\\.git;C\:\\work\\sts-4.4.0.RELEASE-workspace\\.git;C\:\\work\\sts-4.4.0.RELEASE-workspace\\at\\.git;
+GitRepositoriesView.GitDirectories.relative=java-blog\\.git;cuni\\.git;.git;at\\.git;
 core_autoIgnoreDerivedResources=false
 eclipse.preferences.version=1

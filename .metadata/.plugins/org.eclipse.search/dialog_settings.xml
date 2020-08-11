@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="SearchDialog">
-		<item key="PREVIOUS_PAGE" value="org.eclipse.pde.internal.ui.search.SearchPage"/>
+		<item key="PREVIOUS_PAGE" value="org.eclipse.search.internal.ui.text.TextSearchPage"/>
 	</section>
 	<section name="Search">
 		<list key="Search.processedPageIds">
@@ -20,37 +20,35 @@
 		</list>
 	</section>
 	<section name="SearchDialog.ScopePart">
-		<item key="scope" value="0"/>
+		<item key="scope" value="1"/>
 	</section>
 	<section name="DialogBounds_SearchDialog">
 		<item key="DIALOG_X_ORIGIN" value="703"/>
 		<item key="DIALOG_Y_ORIGIN" value="230"/>
-		<item key="DIALOG_WIDTH" value="532"/>
+		<item key="DIALOG_WIDTH" value="571"/>
 		<item key="DIALOG_HEIGHT" value="463"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
 	</section>
 	<section name="">
 		<item key="org.eclipse.search.resultpage.limit" value="1000"/>
-		<item key="org.eclipse.jdt.search.resultpage.limit" value="1000"/>
-		<item key="org.eclipse.jdt.search.resultpage.limit_enabled" value="TRUE"/>
 	</section>
 	<section name="org.eclipse.jdt.ui.JavaSearchResultPage">
 		<item key="org.eclipse.jdt.search.resultpage.limit" value="1000"/>
 		<item key="org.eclipse.jdt.search.resultpage.limit_enabled" value="TRUE"/>
 	</section>
 	<section name="TextSearchPage">
-		<item key="CASE_SENSITIVE" value="false"/>
+		<item key="CASE_SENSITIVE" value="true"/>
 		<item key="REG_EX_SEARCH" value="false"/>
 		<item key="WHOLE_WORD" value="false"/>
 		<item key="SEARCH_DERIVED" value="false"/>
-		<item key="SEARCH_IN_BINARIES" value="false"/>
-		<item key="HISTORY_SIZE" value="6"/>
+		<item key="SEARCH_IN_BINARIES" value="true"/>
+		<item key="HISTORY_SIZE" value="12"/>
 		<section name="HISTORY0">
-			<item key="ignoreCase" value="true"/>
+			<item key="ignoreCase" value="false"/>
 			<item key="isRegExSearch" value="false"/>
 			<item key="isWholeWord" value="false"/>
-			<item key="textPattern" value="&lt;servlet-mapping&gt;"/>
-			<item key="scope" value="0"/>
+			<item key="textPattern" value="ArticleReply"/>
+			<item key="scope" value="1"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
 			</list>
@@ -61,10 +59,10 @@
 			<item key="0" value="*"/>
 		</section>
 		<section name="HISTORY1">
-			<item key="ignoreCase" value="true"/>
+			<item key="ignoreCase" value="false"/>
 			<item key="isRegExSearch" value="false"/>
 			<item key="isWholeWord" value="false"/>
-			<item key="textPattern" value="dispatcherServlet"/>
+			<item key="textPattern" value="articleReply"/>
 			<item key="scope" value="0"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -73,10 +71,10 @@
 			</list>
 		</section>
 		<section name="HISTORY2">
-			<item key="ignoreCase" value="true"/>
+			<item key="ignoreCase" value="false"/>
 			<item key="isRegExSearch" value="false"/>
 			<item key="isWholeWord" value="false"/>
-			<item key="textPattern" value="xml"/>
+			<item key="textPattern" value=".md"/>
 			<item key="scope" value="0"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -88,7 +86,7 @@
 			<item key="ignoreCase" value="true"/>
 			<item key="isRegExSearch" value="false"/>
 			<item key="isWholeWord" value="false"/>
-			<item key="textPattern" value="web.xml"/>
+			<item key="textPattern" value="bean"/>
 			<item key="scope" value="0"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -100,7 +98,7 @@
 			<item key="ignoreCase" value="true"/>
 			<item key="isRegExSearch" value="false"/>
 			<item key="isWholeWord" value="false"/>
-			<item key="textPattern" value="extra__"/>
+			<item key="textPattern" value="context"/>
 			<item key="scope" value="0"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -112,7 +110,79 @@
 			<item key="ignoreCase" value="true"/>
 			<item key="isRegExSearch" value="false"/>
 			<item key="isWholeWord" value="false"/>
-			<item key="textPattern" value="setValue"/>
+			<item key="textPattern" value=".xml"/>
+			<item key="scope" value="0"/>
+			<list key="fileNamePatterns">
+				<item value="*"/>
+			</list>
+			<list key="workingSets">
+			</list>
+		</section>
+		<section name="HISTORY6">
+			<item key="ignoreCase" value="true"/>
+			<item key="isRegExSearch" value="false"/>
+			<item key="isWholeWord" value="false"/>
+			<item key="textPattern" value="root"/>
+			<item key="scope" value="0"/>
+			<list key="fileNamePatterns">
+				<item value="*"/>
+			</list>
+			<list key="workingSets">
+			</list>
+		</section>
+		<section name="HISTORY7">
+			<item key="ignoreCase" value="true"/>
+			<item key="isRegExSearch" value="false"/>
+			<item key="isWholeWord" value="false"/>
+			<item key="textPattern" value="&lt;servlet-mapping&gt;"/>
+			<item key="scope" value="0"/>
+			<list key="fileNamePatterns">
+				<item value="*"/>
+			</list>
+			<list key="workingSets">
+			</list>
+		</section>
+		<section name="HISTORY8">
+			<item key="ignoreCase" value="true"/>
+			<item key="isRegExSearch" value="false"/>
+			<item key="isWholeWord" value="false"/>
+			<item key="textPattern" value="dispatcherServlet"/>
+			<item key="scope" value="0"/>
+			<list key="fileNamePatterns">
+				<item value="*"/>
+			</list>
+			<list key="workingSets">
+			</list>
+		</section>
+		<section name="HISTORY9">
+			<item key="ignoreCase" value="true"/>
+			<item key="isRegExSearch" value="false"/>
+			<item key="isWholeWord" value="false"/>
+			<item key="textPattern" value="xml"/>
+			<item key="scope" value="0"/>
+			<list key="fileNamePatterns">
+				<item value="*"/>
+			</list>
+			<list key="workingSets">
+			</list>
+		</section>
+		<section name="HISTORY10">
+			<item key="ignoreCase" value="true"/>
+			<item key="isRegExSearch" value="false"/>
+			<item key="isWholeWord" value="false"/>
+			<item key="textPattern" value="web.xml"/>
+			<item key="scope" value="0"/>
+			<list key="fileNamePatterns">
+				<item value="*"/>
+			</list>
+			<list key="workingSets">
+			</list>
+		</section>
+		<section name="HISTORY11">
+			<item key="ignoreCase" value="true"/>
+			<item key="isRegExSearch" value="false"/>
+			<item key="isWholeWord" value="false"/>
+			<item key="textPattern" value="extra__"/>
 			<item key="scope" value="0"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -126,5 +196,7 @@
 	</section>
 	<section name="">
 		<item key="org.eclipse.search.resultpage.limit" value="1000"/>
+		<item key="org.eclipse.jdt.search.resultpage.limit" value="1000"/>
+		<item key="org.eclipse.jdt.search.resultpage.limit_enabled" value="TRUE"/>
 	</section>
 </section>
